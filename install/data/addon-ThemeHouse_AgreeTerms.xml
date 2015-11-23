@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon addon_id="ThemeHouse_AgreeTerms" title="[⌂] Agree to Terms of Service" version_string="1.0.0" version_id="1447261019" url="http://xf.themehouse.io" install_callback_class="ThemeHouse_Install" install_callback_method="install" uninstall_callback_class="ThemeHouse_Install" uninstall_callback_method="uninstall">
+  <admin_navigation/>
+  <admin_permissions/>
+  <admin_style_properties/>
+  <admin_templates/>
+  <admin_template_modifications/>
+  <code_events/>
+  <code_event_listeners>
+    <listener event_id="controller_pre_dispatch" execute_order="10" callback_class="ThemeHouse_AgreeTerms_Listener_ControllerPreDispatch" callback_method="controllerPreDispatch" active="1" hint="" description=""/>
+    <listener event_id="file_health_check" execute_order="10" callback_class="ThemeHouse_AgreeTerms_Listener_FileHealthCheck" callback_method="fileHealthCheck" active="1" hint="" description=""/>
+    <listener event_id="init_dependencies" execute_order="10" callback_class="ThemeHouse_Listener_InitDependencies" callback_method="initDependencies" active="1" hint="" description=""/>
+    <listener event_id="load_class" execute_order="10" callback_class="ThemeHouse_AgreeTerms_Listener_LoadClass" callback_method="loadClassDataWriter" active="0" hint="XenForo_DataWriter_User" description="XenForo_DataWriter_User (For XenForo 1.2 and above)" compatibility_switch="1"/>
+    <listener event_id="load_class" execute_order="10" callback_class="ThemeHouse_AgreeTerms_Listener_LoadClass" callback_method="loadClassController" active="0" hint="XenForo_ControllerPublic_Account" description="XenForo_ControllerPublic_Account (For XenForo 1.2 and above)" compatibility_switch="1"/>
+    <listener event_id="load_class" execute_order="10" callback_class="ThemeHouse_AgreeTerms_Listener_LoadClass" callback_method="loadClassDataWriter" active="0" hint="XenForo_DataWriter_Phrase" description="XenForo_DataWriter_Phrase (For XenForo 1.2 and above)" compatibility_switch="1"/>
+    <listener event_id="load_class_controller" execute_order="10" callback_class="ThemeHouse_AgreeTerms_Listener_LoadClass" callback_method="loadClassController" active="1" hint="" description="(For XenForo 1.1 and below)" compatibility_switch="1"/>
+    <listener event_id="load_class_datawriter" execute_order="10" callback_class="ThemeHouse_AgreeTerms_Listener_LoadClass" callback_method="loadClassDataWriter" active="1" hint="" description="(For XenForo 1.1 and below)" compatibility_switch="1"/>
+  </code_event_listeners>
+  <cron/>
+  <email_templates/>
+  <email_template_modifications/>
+  <optiongroups/>
+  <permissions>
+    <permission_groups/>
+    <permissions/>
+    <interface_groups/>
+  </permissions>
+  <phrases>
+    <phrase title="th_i_agree_to_revised_terms_and_rules_agreetermsofserv" version_id="1395328369" version_string="1.0.0"><![CDATA[I agree to the revised terms and rules.]]></phrase>
+    <phrase title="th_our_terms_and_rules_have_changed_agreetermsofserv" version_id="1395328369" version_string="1.0.0"><![CDATA[We have revised the terms of service and rules. Please read and accept these changes.]]></phrase>
+    <phrase title="th_revised_terms_of_service_and_rules_agreetermsofserv" version_id="1395328369" version_string="1.0.0"><![CDATA[Revised Terms of Service and Rules]]></phrase>
+    <phrase title="th_submit_agreetermsofserv" version_id="1395235660" version_string="1.0.0"><![CDATA[Submit]]></phrase>
+  </phrases>
+  <route_prefixes/>
+  <style_properties/>
+  <templates>
+    <template title="th_account_terms_agreetermsofserv" version_id="1395328369" version_string="1.0.0"><![CDATA[<xen:title>{xen:phrase terms_of_service_and_rules}</xen:title>
+
+<form action="{xen:link 'account/terms'}" method="post" class="xenForm AutoValidator" data-redirect="yes">
+
+	<div class="section secondaryContent">{xen:phrase th_our_terms_and_rules_have_changed_agreetermsofserv}</div>
+
+	<h3 class="sectionHeader">{xen:phrase th_revised_terms_of_service_and_rules_agreetermsofserv}</h3>
+
+	<div class="baseHtml">
+	
+	{xen:phrase terms_rules_text}
+	
+	</div>
+	
+	<dl class="ctrlUnit submitUnit">
+		<dt></dt>
+		<dd>
+				<ul>
+					<li>
+						<div class="text"><label><input type="checkbox" name="agree" value="1" id="ctrl_agree" class="Disabler" /> {xen:phrase th_i_agree_to_revised_terms_and_rules_agreetermsofserv}</label></div>
+						<ul id="ctrl_agree_Disabler">
+							<li><input type="submit" value="{xen:phrase th_submit_agreetermsofserv}" accesskey="s" class="button primary" id="SubmitButton" /></li>
+						</ul>						
+					</li>
+				</ul>
+		</dd>
+	</dl>
+
+	<input type="hidden" name="_xfConfirm" value="1" />
+	<input type="hidden" name="_xfToken" value="{$visitor.csrf_token_page}" />
+</form>]]></template>
+  </templates>
+  <public_template_modifications>
+    <modification template="footer" modification_key="th_copyrightNotice_agreeTerms" description="Copyright notice for [⌂] Agree to Terms of Service" execution_order="1" enabled="1" action="callback">
+      <find><![CDATA[/{xen:phrase (?:xenforo|extra)_copyright}/]]></find>
+      <replace><![CDATA[ThemeHouse_Listener_InitDependencies::copyrightNotice]]></replace>
+    </modification>
+    <modification template="footer" modification_key="th_copyrightNotice_agreeTermsOfServ" description="Copyright notice for Agree to Terms of Service by ThemeHouse" execution_order="1" enabled="1" action="callback">
+      <find><![CDATA[/{xen:phrase (?:xenforo|extra)_copyright}/]]></find>
+      <replace><![CDATA[ThemeHouse_Listener_InitDependencies::copyrightNotice]]></replace>
+    </modification>
+  </public_template_modifications>
+  <bb_code_media_sites/>
+  <bb_codes/>
+</addon>
